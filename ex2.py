@@ -33,5 +33,3 @@ def factorial():
         total *= i
 
     print(f"{n}! = {total}")
-
-factorial()
