@@ -42,25 +42,39 @@ def camelcase():
 
     print(res)
 
+def is_camelcase(string):
+    for char in string:
+        if char.isalpha() == False:
+            return False
+        
+    return True
+
 def split_camelcase():
     string = input("enter a sentence in CamelCase: ")
-    string = string[:1].lower() + string[1:]
+    if is_camelcase(string) == False:
+        return split_camelcase()
 
     res = ""
     word = ""
-    index = 0
     
-    for char in string:
-        if index == len(string):
-            res += word
-        if char.islower() == True: # lowercase letter
+    for index, char in enumerate(string):
+        if index == 0:
             word += char
-        else: # uppercase letter
+            continue
+
+        if char.islower() == True:
+            word += char
+            if index == len(string) - 1:
+                res += word
+            continue
+        
+        if char.isupper() == True:
             res = res + word + " "
             word = char
+            if index == len(string) - 1:
+                res += word
+            continue
 
-        index += 1
-
-    print(res)
+    print(res.split())
 
 split_camelcase()
