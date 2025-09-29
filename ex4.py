@@ -31,4 +31,36 @@ def remove_whitespaces():
 
     print(string.replace(" ", ""))
 
-remove_whitespaces()
+def camelcase():
+    string = input("enter a sentence: ")
+    if has_punctuation(string) == False:
+        return camelcase()
+    
+    res = ""
+    for word in string.split():
+        res += word.capitalize()
+
+    print(res)
+
+def split_camelcase():
+    string = input("enter a sentence in CamelCase: ")
+    string = string[:1].lower() + string[1:]
+
+    res = ""
+    word = ""
+    index = 0
+    
+    for char in string:
+        if index == len(string):
+            res += word
+        if char.islower() == True: # lowercase letter
+            word += char
+        else: # uppercase letter
+            res = res + word + " "
+            word = char
+
+        index += 1
+
+    print(res)
+
+split_camelcase()
