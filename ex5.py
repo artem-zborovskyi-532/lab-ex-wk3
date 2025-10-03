@@ -54,7 +54,7 @@ def caesar_encrypt():
 def caesar_decrypt():
     str = input("Enter encrypted text to decrypt -> ")
     if is_plain(str) == False:
-        return caesar_encrypt()
+        return caesar_decrypt()
     
     shift = int(input("Enter number of shifts for letter's position -> "))
     while shift < 0:
@@ -69,5 +69,3 @@ def caesar_decrypt():
         res += letter_from_pos(c, char.isupper())
 
     print(f"Decrypted string: {res}")
-
-caesar_decrypt()
